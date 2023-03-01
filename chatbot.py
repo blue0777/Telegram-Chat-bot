@@ -7,7 +7,7 @@ Cosmic = Client(name="OpenaiBot",api_id=Config.api_id,api_hash=Config.api_hash)
 
 async def ai(query):
     openai.api_key = Config.openai_api_key
-    completion = openai.Completion.create(engine=guu.model, prompt=query, max_tokens=Config.mxtoken, n=1, stop=None,temperature=0.7)
+    completion = openai.Completion.create(engine=Config.model, prompt=query, max_tokens=Config.mxtoken, n=1, stop=None,temperature=0.7)
     result = completion.choices[0].text
     return result
 
