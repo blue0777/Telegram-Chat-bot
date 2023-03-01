@@ -1,13 +1,19 @@
+import os
+from pathlib import Path
 import asyncio
-import Config
+from dotenv import load_dotenv
 import openai
 from pyrogram import filters, Client
 
-Cosmic = Client(name="OpenaiBot",api_id=Config.api_id,api_hash=Config.api_hash)
+dotenv_path = Path('path/to/.env')
+load_dotenv(dotenv_path=dotenv_path)
+
+
+Cosmic = Client(name="OpenaiBot",api_id = os.environ.get("api_id") ,api_hash = os.environ.get("api_hash"))
 
 async def ai(query):
-    openai.api_key = Config.openai_api_key
-    completion = openai.Completion.create(engine=Config.model, prompt=query, max_tokens=Config.mxtoken, n=1, stop=None,temperature=0.7)
+    openai.api_key = os.environ.get("openai_api_key")
+    completion = openai.Completion.create(engine=os.environ.get("model"), prompt=query, max_tokens=os.environ.get("maxtoken"), n=1, stop=None,temperature=0.7)
     result = completion.choices[0].text
     return result
 
@@ -33,10 +39,10 @@ async def main(bot, msg):
     user_send_msg = msg.from_user.id
     ques = msg.text
     print(ques)
-    Config = await ai(ques)
+    dotenv_path = await ai(ques)
     await asyncio.sleep(3)
-    print(Config)
-    test = f"`{Config}`"
+    print(dotenv_path)
+    test = f"`{dotenv_path}`"
     await asyncio.sleep(1)
     await bot.send_message(user_send_msg,test)
 
