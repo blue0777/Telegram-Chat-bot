@@ -1,5 +1,4 @@
-class guu:
-    api_id = "" 
-    api_hash = "" 
-    bot_token = "" 
-    openai_api_key = ""
+api_id = "API_KEY" 
+api_hash = "API_ID" 
+bot_token = "BOT_TOKEN" 
+openai_api_key = "OPENAI_API_KEY"
