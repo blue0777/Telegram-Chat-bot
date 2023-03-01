@@ -1,13 +1,13 @@
 import asyncio
-from Config import guu
+import Config
 import openai
 from pyrogram import filters, Client
 
-Cosmic = Client(name="OpenaiBot",api_id=guu.api_id,api_hash=guu.api_hash)
+Cosmic = Client(name="OpenaiBot",api_id=Config.api_id,api_hash=Config.api_hash)
 
 async def ai(query):
-    openai.api_key = guu.openai_api_key
-    completion = openai.Completion.create(engine=guu.model, prompt=query, max_tokens=guu.mxtoken, n=1, stop=None,temperature=0.7)
+    openai.api_key = Config.openai_api_key
+    completion = openai.Completion.create(engine=guu.model, prompt=query, max_tokens=Config.mxtoken, n=1, stop=None,temperature=0.7)
     result = completion.choices[0].text
     return result
 
@@ -33,10 +33,10 @@ async def main(bot, msg):
     user_send_msg = msg.from_user.id
     ques = msg.text
     print(ques)
-    guu = await ai(ques)
+    Config = await ai(ques)
     await asyncio.sleep(3)
-    print(guu)
-    test = f"`{guu}`"
+    print(Config)
+    test = f"`{Config}`"
     await asyncio.sleep(1)
     await bot.send_message(user_send_msg,test)
 
