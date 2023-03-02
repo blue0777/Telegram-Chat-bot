@@ -26,7 +26,7 @@ async def main(bot,msg):
                     'Belongs to OpenAIs GPT-3 family \n'
                     'Im here to help answer any questions you may have about a variety of topics.\n'
                     'Feel free to ask me anything! ☺️\n\n'
-                    'MADE BY : Soham Sankpal \n'
+                    'MADE BY : Cosmic \n'
                     'Git-Hub Profile : https://github.com/blue0777\n'
                     'Git-Hub Reposotory : \n'
                     'Social Media : https://instagram.com/soham_07778/')
